@@ -1,29 +1,45 @@
-var userVid, yodelVid;
+var userVid;
+var yodelVid;
+var userVidReady = false; // See this, kids? This is why promises are good.
+var yodelVidReady = false;
 
 window.onYouTubeIframeAPIReady = function() {
-	userVid = new YT.Player('userVid', {
-		height: '390',
-		width: '640',
-		videoId: '0T8A38OHQMQ',
-		html5: 1,
-		events: {
-			onReady: onUserVidReady,
-			onStateChange: onUserVidStateChange,
-		}
-	});
-	
-	yodelVid = new YT.Player('yodelVid', {
-		height: '390',
-		width: '640',
-		videoId: 'vQhqikWnQCU',
-		html5: 1,
-		events: {
-			onReady: onYodelVidReady,
-		}
-	});
+	if (location.search) {
+		userVid = new YT.Player('userVid', {
+			height: '390',
+			width: '640',
+			videoId: location.search.replace("?v=",""),
+			playerVars: {
+				showinfo: 0,
+				modestbranding: 1,
+			},
+			events: {
+				onReady: function() {
+					userVidReady = true;
+					if (yodelVidReady) onVideosReady();
+				},
+				onStateChange: onUserVidStateChange,
+			}
+		});
+
+		yodelVid = new YT.Player('yodelVid', {
+			height: '390',
+			width: '640',
+			videoId: 'vQhqikWnQCU',
+			playerVars: {
+				start: 2
+			},
+			events: {
+				onReady: function() {
+					yodelVidReady = true;
+					if (userVidReady) onVideosReady();
+				},
+			}
+		});
+	}
 };
 
-function onUserVidReady() {
+function onVideosReady() {
 	userVid.mute();
 	if (userVid.getAvailablePlaybackRates().indexOf(2) === -1) {
 		// show error div
@@ -31,9 +47,7 @@ function onUserVidReady() {
 		userVid.setPlaybackRate(2);
 	}
 	userVid.playVideo();
-}
 
-function onYodelVidReady() {
 	yodelVid.unMute();
 	yodelVid.setVolume(100);
 	yodelVid.playVideo();
