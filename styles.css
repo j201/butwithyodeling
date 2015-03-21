@@ -60,6 +60,24 @@ input {
 	display: none;
 }
 
+#icon-links {
+	opacity: 0.7;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	display: inline-block;
+}
+
+#icon-links:hover {
+	opacity: 1;
+}
+
+.icon-link {
+	margin-top: 5px;
+	margin-right: 4px;
+	display: inline-block;
+}
+
 @keyframes flashing {
 	0% {
 		background-color: #3c8;
