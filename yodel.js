@@ -12,13 +12,18 @@ window.onYouTubeIframeAPIReady = function() {
 			playerVars: {
 				showinfo: 0,
 				modestbranding: 1,
+				html5: 1
 			},
 			events: {
 				onReady: function() {
 					userVidReady = true;
 					if (yodelVidReady) onVideosReady();
 				},
-				onStateChange: onUserVidStateChange,
+				onStateChange: function(e) {
+					if (yodelVidReady) {
+						onUserVidStateChange(e);
+					}
+				}
 			}
 		});
 
@@ -27,7 +32,8 @@ window.onYouTubeIframeAPIReady = function() {
 			width: '640',
 			videoId: 'vQhqikWnQCU',
 			playerVars: {
-				start: 2
+				start: 2,
+				html5: 1
 			},
 			events: {
 				onReady: function() {
