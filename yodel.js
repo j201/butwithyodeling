@@ -18,7 +18,11 @@ window.onYouTubeIframeAPIReady = function() {
 					userVidReady = true;
 					if (yodelVidReady) onVideosReady();
 				},
-				onStateChange: onUserVidStateChange,
+				onStateChange: function(e) {
+					if (yodelVidReady) {
+						onUserVidStateChange(e);
+					}
+				}
 			}
 		});
 
