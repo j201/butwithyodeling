@@ -1,20 +1,48 @@
-var player;
+var userVid, yodelVid;
 
 window.onYouTubeIframeAPIReady = function() {
-	player = new YT.Player('player', {
+	userVid = new YT.Player('userVid', {
 		height: '390',
 		width: '640',
-		videoId: 'OEoXaMPEzfM',
+		videoId: '0T8A38OHQMQ',
 		html5: 1,
 		events: {
-			'onReady': onPlayerReady,
+			onReady: onUserVidReady,
+			onStateChange: onUserVidStateChange,
+		}
+	});
+	
+	yodelVid = new YT.Player('yodelVid', {
+		height: '390',
+		width: '640',
+		videoId: 'vQhqikWnQCU',
+		html5: 1,
+		events: {
+			onReady: onYodelVidReady,
 		}
 	});
 };
 
-function onPlayerReady(event) {
-	console.log(player.getAvailablePlaybackRates());
-	player.mute();
-	player.setPlaybackRate(2);
-	player.playVideo();
+function onUserVidReady() {
+	userVid.mute();
+	if (userVid.getAvailablePlaybackRates().indexOf(2) === -1) {
+		// show error div
+	} else {
+		userVid.setPlaybackRate(2);
+	}
+	userVid.playVideo();
+}
+
+function onYodelVidReady() {
+	yodelVid.unMute();
+	yodelVid.setVolume(100);
+	yodelVid.playVideo();
+}
+
+function onUserVidStateChange(e) {
+	if (e.data === YT.PlayerState.PLAYING) {
+		yodelVid.playVideo();
+	} else {
+		yodelVid.pauseVideo();
+	}
 }
