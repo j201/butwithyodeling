@@ -47,6 +47,7 @@ function onVideosReady() {
 		userVid.setPlaybackRate(2);
 	}
 	userVid.playVideo();
+	document.body.className += "flashing";
 
 	yodelVid.unMute();
 	yodelVid.setVolume(100);
@@ -56,7 +57,9 @@ function onVideosReady() {
 function onUserVidStateChange(e) {
 	if (e.data === YT.PlayerState.PLAYING) {
 		yodelVid.playVideo();
+		document.body.className += "flashing";
 	} else {
 		yodelVid.pauseVideo();
+		document.body.className = '';
 	}
 }

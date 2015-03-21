@@ -1,3 +1,81 @@
 #yodelVid {
 	display: none;
 }
+
+body {
+	padding-top: 200px;
+	text-align: center;
+	background-color: #3c8;
+}
+
+body.flashing {
+	animation-duration: 0.82s; /* 2 beats at 145 bpm, roughly syncs with music */
+	animation-iteration-count: infinite;
+	animation-name: flashing;
+	-webkit-animation-duration: 0.82s; /* 2 beats at 145 bpm, roughly syncs with music */
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-name: flashing;
+}
+
+body, input, button {
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 20px;
+}
+
+button {
+	background-color: #E8F063;
+	border: none;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+	border-radius: 3px;
+	padding: 2px 4px;
+}
+
+button:hover {
+	background-color: #ce4;
+	cursor: pointer;
+}
+
+button:active {
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+	background-color: #ad2;
+	position: relative;
+	top: 1px;
+}
+
+input {
+	background-color: #efa;
+	border: 2px solid #9db;
+}
+
+#videoURL {
+	width: 300px;
+	margin-right: 10px;
+}
+
+@keyframes flashing {
+	0% {
+		background-color: #3c8;
+	}
+
+	50% {
+		background-color: #EF6;
+	}
+
+	100% {
+		background-color: #3c8;
+	}
+}
+
+@-webkit-keyframes flashing {
+	0% {
+		background-color: #3c8;
+	}
+
+	50% {
+		background-color: #EF6;
+	}
+
+	100% {
+		background-color: #3c8;
+	}
+}
