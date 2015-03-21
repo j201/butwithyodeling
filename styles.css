@@ -52,6 +52,14 @@ input {
 	margin-right: 10px;
 }
 
+#error {
+	background-color: #faa;
+	margin: 20px auto;
+	max-width: 400px;
+	padding: 20px;
+	display: none;
+}
+
 @keyframes flashing {
 	0% {
 		background-color: #3c8;

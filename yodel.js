@@ -42,7 +42,7 @@ window.onYouTubeIframeAPIReady = function() {
 function onVideosReady() {
 	userVid.mute();
 	if (userVid.getAvailablePlaybackRates().indexOf(2) === -1) {
-		// show error div
+		showError("The video is either using Flash or your browser doesn't support HTML5 playback speed. You could try another video, but you probably need a better browser.");
 	} else {
 		userVid.setPlaybackRate(2);
 	}
