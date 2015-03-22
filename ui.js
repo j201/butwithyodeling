@@ -3,6 +3,7 @@ var goButton = document.getElementById('go');
 
 if (location.search) {
 	document.getElementById("ui").style.display = 'none';
+	document.getElementById("home").style.display = 'block';
 }
 
 function go() {
