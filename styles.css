@@ -47,6 +47,26 @@ input {
 	border: 2px solid #9db;
 }
 
+.alps {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:-1;
+	/*background-image: url("http://www.andermatt-swissalps.ch/fileadmin/user_upload/Location/Andermatt/Back_Andermatt.jpg");*/
+	opacity:0.5;
+	filter:alpha(opacity=50);
+	text-align: left;
+}
+
+.alps img {
+	height: auto;
+	min-height: 100%;
+	width: 100%;
+	min-width: 1024px;
+}
+
 #videoURL {
 	width: 300px;
 	margin-right: 10px;
