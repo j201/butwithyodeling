@@ -47,6 +47,10 @@ input {
 	border: 2px solid #9db;
 }
 
+#bg {
+	transition: opacity 0.4s;
+}
+
 .alps {
 	position:absolute;
 	top:0;
