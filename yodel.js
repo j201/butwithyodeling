@@ -33,7 +33,8 @@ window.onYouTubeIframeAPIReady = function() {
 			videoId: 'vQhqikWnQCU',
 			playerVars: {
 				start: 2,
-				html5: 1
+				html5: 1,
+				loop: 1
 			},
 			events: {
 				onReady: function() {
